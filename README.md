@@ -4,7 +4,8 @@ API de catálogo de produtos desenvolvida em Laravel, com autenticação via San
 
 Este projeto foi construído como backend. O frontend será desenvolvido separadamente em React, consumindo esta API.
 
-[Documentação](/docs/api)
+Documentação:
+[http://localhost/docs/api](http://localhost/docs/api)
 
 ---
 
