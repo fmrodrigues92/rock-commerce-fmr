@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\Auth\LoginController;
 use App\Http\Controllers\Api\Auth\RegisterController;
 use App\Http\Controllers\Api\Auth\LogoutController;
 use App\Http\Controllers\Api\Auth\MeController;
+use App\Http\Controllers\Api\Catalog\CategoriesController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -37,8 +38,8 @@ Route::group([
     'prefix' => '',
     'middleware' => ['auth:sanctum'],
 ], function () {
-    
     // Rotas protegidas por autenticação
+
     Route::get('/protected', function (Request $request) {
         return response()->json([
             'success' => true,
@@ -48,7 +49,8 @@ Route::group([
                 'email' => $request->user()->email,
             ],
         ]);        
-    });
+    }); // Rota de exemplo para testar autenticação
 
-    
+    //lista de categorias
+    Route::get('/categories', [CategoriesController::class, 'index']);
 });
