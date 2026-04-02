@@ -1,5 +1,8 @@
 <?php
 
+use App\src\Auth\Domain\Exceptions\EmailAlreadyInUseException;
+use App\src\Auth\Domain\Exceptions\InvalidCredentialsException;
+use App\src\Catalog\Domain\Product\Exceptions\ProductNotFoundException;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -15,25 +18,27 @@ return Application::configure(basePath: dirname(__DIR__))
         //
     })
     ->withExceptions(function (Exceptions $exceptions): void {
-        $exceptions->render(function (
-            \App\src\Auth\Domain\Exceptions\EmailAlreadyInUseException $e,
-            $request
-        ) {
+        $exceptions->render(function (EmailAlreadyInUseException $exception, $request) {
             return response()->json([
                 'success' => false,
-                'message' => $e->getMessage(),
+                'message' => $exception->getMessage(),
                 'data' => null,
             ], 400);
         });
 
-        $exceptions->render(function (
-            \App\src\Auth\Domain\Exceptions\InvalidCredentialsException $e,
-            $request
-        ) {
+        $exceptions->render(function (InvalidCredentialsException $exception, $request) {
             return response()->json([
                 'success' => false,
-                'message' => $e->getMessage(),
+                'message' => $exception->getMessage(),
                 'data' => null,
             ], 401);
+        });
+
+        $exceptions->render(function (ProductNotFoundException $exception, $request) {
+            return response()->json([
+                'success' => false,
+                'message' => $exception->getMessage(),
+                'data' => null,
+            ], 404);
         });
     })->create();

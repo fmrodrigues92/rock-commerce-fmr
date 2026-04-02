@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\Auth\RegisterController;
 use App\Http\Controllers\Api\Auth\LogoutController;
 use App\Http\Controllers\Api\Auth\MeController;
 use App\Http\Controllers\Api\Catalog\CategoriesController;
+use App\Http\Controllers\Api\Catalog\ProductController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -53,4 +54,8 @@ Route::group([
 
     //lista de categorias
     Route::get('/categories', [CategoriesController::class, 'index']);
+
+    //lista de produtos
+    Route::get('/products', [ProductController::class, 'index']);
+    Route::get('/products/{id}', [ProductController::class, 'show']);
 });

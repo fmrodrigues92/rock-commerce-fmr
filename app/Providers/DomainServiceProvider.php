@@ -10,6 +10,8 @@ use App\src\Auth\Infrastructure\Security\LaravelPasswordHasher;
 use App\src\Auth\Infrastructure\Security\SanctumTokenIssuer;
 use App\src\Catalog\Domain\Category\Contracts\CategoryRepositoryInterface;
 use App\src\Catalog\Infrastructure\Category\Persistence\EloquentCategoryRepository;
+use App\src\Catalog\Domain\Product\Contracts\ProductRepositoryInterface;
+use App\src\Catalog\Infrastructure\Product\Persistence\EloquentProductRepository;
 use Illuminate\Support\ServiceProvider;
 
 class DomainServiceProvider extends ServiceProvider
@@ -21,6 +23,8 @@ class DomainServiceProvider extends ServiceProvider
         $this->app->bind(TokenIssuerInterface::class, SanctumTokenIssuer::class);
 
         $this->app->bind(CategoryRepositoryInterface::class, EloquentCategoryRepository::class);
+
+        $this->app->bind(ProductRepositoryInterface::class, EloquentProductRepository::class);
     }
 
     public function boot(): void
