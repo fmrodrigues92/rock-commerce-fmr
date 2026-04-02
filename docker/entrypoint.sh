@@ -12,9 +12,8 @@ done
 
 echo "Banco disponível."
 
-if [ ! -L public/storage ]; then
-  php artisan storage:link || true
-fi
+
+php artisan storage:link
 
 php artisan migrate --force
 php artisan db:seed --force
