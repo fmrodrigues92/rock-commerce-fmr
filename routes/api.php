@@ -9,14 +9,6 @@ use App\Http\Controllers\Api\Auth\MeController;
 use App\Http\Controllers\Api\Catalog\CategoriesController;
 use App\Http\Controllers\Api\Catalog\ProductController;
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:sanctum');
-
-//======================================================
-//======================================================
-//======================================================
-
 Route::group([
         'as' => '',
         'prefix' => 'auth',
@@ -40,17 +32,6 @@ Route::group([
     'middleware' => ['auth:sanctum'],
 ], function () {
     // Rotas protegidas por autenticação
-
-    Route::get('/protected', function (Request $request) {
-        return response()->json([
-            'success' => true,
-            'message' => 'Rota protegida acessada com sucesso.',
-            'data' => [
-                'user_id' => $request->user()->id,
-                'email' => $request->user()->email,
-            ],
-        ]);        
-    }); // Rota de exemplo para testar autenticação
 
     //lista de categorias
     Route::get('/categories', [CategoriesController::class, 'index']);

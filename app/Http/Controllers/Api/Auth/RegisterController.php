@@ -8,7 +8,9 @@ use App\src\Auth\Application\DTOs\RegisterInput;
 use App\src\Auth\Application\UseCases\RegisterUserUseCase;
 use App\src\Auth\Presentation\Transformers\AuthResponseTransformer;
 use Illuminate\Http\JsonResponse;
+use Dedoc\Scramble\Attributes\Group;
 
+#[Group('Auth')]
 class RegisterController extends Controller
 {
     public function __invoke(

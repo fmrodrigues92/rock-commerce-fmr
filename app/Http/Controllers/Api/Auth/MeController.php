@@ -7,7 +7,9 @@ use App\src\Auth\Application\UseCases\GetAuthenticatedUserUseCase;
 use App\src\Auth\Presentation\Transformers\AuthenticatedUserTransformer;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Dedoc\Scramble\Attributes\Group;
 
+#[Group('Auth')]
 class MeController extends Controller
 {
     public function __invoke(

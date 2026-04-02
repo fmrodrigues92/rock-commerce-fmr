@@ -8,7 +8,9 @@ use App\src\Auth\Application\DTOs\LoginInput;
 use App\src\Auth\Application\UseCases\LoginUserUseCase;
 use App\src\Auth\Presentation\Transformers\AuthResponseTransformer;
 use Illuminate\Http\JsonResponse;
+use Dedoc\Scramble\Attributes\Group;
 
+#[Group('Auth')]
 class LoginController extends Controller
 {
     public function __invoke(
