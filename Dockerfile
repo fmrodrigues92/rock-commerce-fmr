@@ -8,7 +8,10 @@ RUN apt-get update && apt-get install -y \
     curl \
     libzip-dev \
     default-mysql-client \
-    && docker-php-ext-install pdo pdo_mysql zip
+    $PHPIZE_DEPS \
+    && docker-php-ext-install pdo pdo_mysql zip \
+    && pecl install xdebug \
+    && docker-php-ext-enable xdebug
 
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
