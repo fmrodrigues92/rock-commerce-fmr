@@ -3,19 +3,19 @@
 namespace App\src\Catalog\Application\Product\UseCases;
 
 use App\src\Catalog\Application\Product\DTOs\ProductOutput;
-use App\src\Catalog\Domain\Product\Contracts\ProductRepositoryInterface;
+use App\src\Catalog\Application\Product\Services\ProductService;
 use App\src\Catalog\Domain\Product\Exceptions\ProductNotFoundException;
 
 class GetProductUseCase
 {
     public function __construct(
-        private ProductRepositoryInterface $productRepository
+        private ProductService $productService
     ) {
     }
 
     public function execute(int $id): ProductOutput
     {
-        $product = $this->productRepository->findById($id);
+        $product = $this->productService->findById($id);
 
         if (! $product) {
             throw new ProductNotFoundException('Produto não encontrado.');

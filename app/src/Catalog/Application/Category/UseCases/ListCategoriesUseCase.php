@@ -3,12 +3,12 @@
 namespace App\src\Catalog\Application\Category\UseCases;
 
 use App\src\Catalog\Application\Category\DTOs\CategoryOutput;
-use App\src\Catalog\Domain\Category\Contracts\CategoryRepositoryInterface;
+use App\src\Catalog\Application\Category\Services\CategoryService;
 
 class ListCategoriesUseCase
 {
     public function __construct(
-        private CategoryRepositoryInterface $categoryRepository
+        private CategoryService $categoryService
     ) {
     }
 
@@ -17,7 +17,7 @@ class ListCategoriesUseCase
      */
     public function execute(array $filters = []): array
     {
-        $categories = $this->categoryRepository->all();
+        $categories = $this->categoryService->list();
 
         return array_map(
             fn ($category) => new CategoryOutput(
