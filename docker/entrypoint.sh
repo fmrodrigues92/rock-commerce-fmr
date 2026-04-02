@@ -13,7 +13,7 @@ done
 echo "Banco disponível."
 
 
-ln -s storage/app/public public/storage
+php artisan storage:link
 
 php artisan migrate --force
 php artisan db:seed --force
