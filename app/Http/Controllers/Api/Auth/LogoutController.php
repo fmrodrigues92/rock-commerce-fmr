@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use App\src\Auth\Application\UseCases\LogoutUserUseCase;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Dedoc\Scramble\Attributes\Group;
 
+#[Group('Auth')]
 class LogoutController extends Controller
 {
     public function __invoke(
