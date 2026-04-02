@@ -69,7 +69,7 @@ Clone o projeto:
 
 ```sh
 git clone <url-do-repositorio>
-cd rock-commerce
+cd rock-commerce-fmr
 ```
 
 Copie o arquivo de ambiente:
@@ -78,66 +78,22 @@ Copie o arquivo de ambiente:
 cp .env.example .env
 ```
 
-Instale as dependências:
-
-```sh
-composer install
-```
-
 Suba os containers:
 
 ```sh
-./vendor/bin/sail up -d
-```
-
-Gere a chave da aplicação:
-
-```sh
-./vendor/bin/sail artisan key:generate
-```
-
-Rode as migrations e seeders:
-
-```sh
-./vendor/bin/sail artisan migrate --seed
+docker-compose up
 ```
 
 A aplicação ficará disponível em:
 
 ```text
-http://localhost
+http://localhost:8000
 ```
 
-### Comandos úteis com Sail
+A documentação aplicação ficará disponível em:
 
-Subir ambiente:
-
-```sh
-./vendor/bin/sail up -d
-```
-
-Parar ambiente:
-
-```sh
-./vendor/bin/sail down
-```
-
-Rodar testes:
-
-```sh
-./vendor/bin/sail artisan test
-```
-
-Abrir shell no container:
-
-```sh
-./vendor/bin/sail shell
-```
-
-Recriar banco com seed:
-
-```sh
-./vendor/bin/sail artisan migrate:fresh --seed
+```text
+http://localhost:8000/docs/api
 ```
 
 ---
@@ -165,7 +121,7 @@ Clone o projeto no servidor:
 
 ```sh
 git clone <url-do-repositorio>
-cd rock-commerce
+cd rock-commerce-fmr
 ```
 
 Instale as dependências sem pacote de desenvolvimento:
@@ -251,44 +207,6 @@ server {
 
 ---
 
-## Variáveis de ambiente
-
-Exemplo básico para desenvolvimento com Sail:
-
-```env
-APP_NAME="Rock Commerce"
-APP_ENV=local
-APP_KEY=
-APP_DEBUG=true
-APP_URL=http://localhost
-
-DB_CONNECTION=mysql
-DB_HOST=mysql
-DB_PORT=3306
-DB_DATABASE=rock_commerce
-DB_USERNAME=sail
-DB_PASSWORD=password
-```
-
-Exemplo básico para produção:
-
-```env
-APP_NAME="Rock Commerce"
-APP_ENV=production
-APP_KEY=
-APP_DEBUG=false
-APP_URL=https://seu-dominio.com
-
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=rock_commerce
-DB_USERNAME=usuario
-DB_PASSWORD=senha-forte
-```
-
----
-
 ## Autenticação
 
 A autenticação usa Sanctum com Bearer Token.
@@ -333,7 +251,7 @@ Filtros suportados em `/api/products`:
 Rodar todos os testes:
 
 ```sh
-php artisan test
+docker-compose exec -e XDEBUG_MODE=coverage backend php artisan test --coverage
 ```
 
 Com Sail:
