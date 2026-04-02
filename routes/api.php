@@ -11,7 +11,7 @@ use App\Http\Controllers\Api\Catalog\ProductController;
 
 Route::group([
         'as' => '',
-        'prefix' => 'auth',
+        'prefix' => '',
         'middleware' => [],
     ], function () {
         

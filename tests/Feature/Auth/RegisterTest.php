@@ -12,7 +12,7 @@ class RegisterTest extends TestCase
 
     public function test_it_registers_a_user_successfully(): void
     {
-        $response = $this->postJson('/api/auth/register', [
+        $response = $this->postJson('/api/register', [
             'name' => 'Fernando',
             'email' => 'fernando@email.com',
             'password' => '123456',
@@ -46,7 +46,7 @@ class RegisterTest extends TestCase
 
     public function test_it_validates_required_fields_on_register(): void
     {
-        $response = $this->postJson('/api/auth/register', []);
+        $response = $this->postJson('/api/register', []);
 
         $response->assertStatus(422)
             ->assertJsonValidationErrors(['name', 'email', 'password']);
@@ -58,7 +58,7 @@ class RegisterTest extends TestCase
             'email' => 'fernando@email.com',
         ]);
 
-        $response = $this->postJson('/api/auth/register', [
+        $response = $this->postJson('/api/register', [
             'name' => 'Fernando',
             'email' => 'fernando@email.com',
             'password' => '123456',

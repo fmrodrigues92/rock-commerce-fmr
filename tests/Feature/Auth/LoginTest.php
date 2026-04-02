@@ -19,7 +19,7 @@ class LoginTest extends TestCase
             'password' => Hash::make('123456'),
         ]);
 
-        $response = $this->postJson('/api/auth/login', [
+        $response = $this->postJson('/api/login', [
             'email' => 'fernando@email.com',
             'password' => '123456',
         ]);
@@ -52,7 +52,7 @@ class LoginTest extends TestCase
             'password' => Hash::make('123456'),
         ]);
 
-        $response = $this->postJson('/api/auth/login', [
+        $response = $this->postJson('/api/login', [
             'email' => 'fernando@email.com',
             'password' => 'senha_errada',
         ]);
@@ -62,7 +62,7 @@ class LoginTest extends TestCase
 
     public function test_it_validates_required_fields_on_login(): void
     {
-        $response = $this->postJson('/api/auth/login', []);
+        $response = $this->postJson('/api/login', []);
 
         $response->assertStatus(422)
             ->assertJsonValidationErrors(['email', 'password']);
