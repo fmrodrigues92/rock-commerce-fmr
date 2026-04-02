@@ -16,6 +16,7 @@ class ProductMapper
             name: $product->name,
             description: $product->description,
             price: (string) $product->price,
+            imageUrl: $product->image_url,
             createdAt: $product->created_at?->toDateTimeString() ?? '',
             updatedAt: $product->updated_at?->toDateTimeString() ?? '',
         );

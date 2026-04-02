@@ -31,6 +31,7 @@ class ListProductsUseCase
                 name: $product->name,
                 description: $product->description,
                 price: $product->price,
+                imageUrl: $product->imageUrl,
                 createdAt: $product->createdAt,
                 updatedAt: $product->updatedAt,
             ),

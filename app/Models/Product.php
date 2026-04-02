@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-#[Fillable(['category_id', 'name', 'description', 'price'])]
+#[Fillable(['category_id', 'name', 'description', 'price', 'image_url'])]
 #[Hidden(['created_at', 'updated_at'])]
 class Product extends Model
 {

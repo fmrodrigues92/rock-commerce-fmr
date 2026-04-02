@@ -16,6 +16,7 @@ class ProductTransformer
             'name' => $product->name,
             'description' => $product->description,
             'price' => $product->price,
+            'image_url' => $product->imageUrl,
             'created_at' => $product->createdAt,
             'updated_at' => $product->updatedAt,
         ];
@@ -32,6 +33,7 @@ class ProductTransformer
                     'name' => $product->name,
                     'description' => $product->description,
                     'price' => $product->price,
+                    'image_url' => $product->imageUrl,
                     'created_at' => $product->createdAt,
                     'updated_at' => $product->updatedAt,
                 ],

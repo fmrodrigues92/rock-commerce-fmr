@@ -42,6 +42,8 @@ class ShowProductTest extends TestCase
                     'category_name' => 'Games',
                     'name' => 'Controle Xbox',
                     'description' => 'Controle sem fio',
+                    'price' => '399.90',
+                    'image_url' => null,
                 ],
             ])
             ->assertJsonStructure([
@@ -54,6 +56,7 @@ class ShowProductTest extends TestCase
                     'name',
                     'description',
                     'price',
+                    'image_url',
                     'created_at',
                     'updated_at',
                 ],
