@@ -5,18 +5,18 @@ namespace App\src\Catalog\Application\Product\UseCases;
 use App\src\Catalog\Application\Product\DTOs\ListProductsInput;
 use App\src\Catalog\Application\Product\DTOs\PaginatedProductsOutput;
 use App\src\Catalog\Application\Product\DTOs\ProductListItemOutput;
-use App\src\Catalog\Domain\Product\Contracts\ProductRepositoryInterface;
+use App\src\Catalog\Application\Product\Services\ProductService;
 
 class ListProductsUseCase
 {
     public function __construct(
-        private ProductRepositoryInterface $productRepository
+        private ProductService $productService
     ) {
     }
 
     public function execute(ListProductsInput $input): PaginatedProductsOutput
     {
-        $result = $this->productRepository->paginate([
+        $result = $this->productService->list([
             'category' => $input->category,
             'search' => $input->search,
             'page' => $input->page,
