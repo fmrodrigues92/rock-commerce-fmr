@@ -25,7 +25,7 @@ class LogoutTest extends TestCase
         ]);
 
         $response = $this->withHeader('Authorization', 'Bearer ' . $plainTextToken)
-            ->postJson('/api/auth/logout');
+            ->postJson('/api/logout');
 
         $response->assertOk()
             ->assertJson([
@@ -41,7 +41,7 @@ class LogoutTest extends TestCase
 
     public function test_it_blocks_unauthenticated_access_to_logout(): void
     {
-        $response = $this->postJson('/api/auth/logout');
+        $response = $this->postJson('/api/logout');
 
         $response->assertUnauthorized();
     }

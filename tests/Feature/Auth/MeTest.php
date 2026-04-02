@@ -20,7 +20,7 @@ class MeTest extends TestCase
         $token = $user->createToken('auth_token')->plainTextToken;
 
         $response = $this->withHeader('Authorization', 'Bearer ' . $token)
-            ->getJson('/api/auth/me');
+            ->getJson('/api/me');
 
         $response->assertOk()
             ->assertJson([
@@ -36,7 +36,7 @@ class MeTest extends TestCase
 
     public function test_it_blocks_unauthenticated_access_to_me(): void
     {
-        $response = $this->getJson('/api/auth/me');
+        $response = $this->getJson('/api/me');
 
         $response->assertUnauthorized();
     }
